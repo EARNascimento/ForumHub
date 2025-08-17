@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @Getter
 @EqualsAndHashCode(of = "id")
-public class Topico {
+public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
