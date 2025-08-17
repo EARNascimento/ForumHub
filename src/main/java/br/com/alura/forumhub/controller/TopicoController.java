@@ -1,4 +1,4 @@
-package br.com.alura.forumhub;
+package br.com.alura.forumhub.controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -16,12 +16,12 @@ public class TopicoController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity createTopic(@RequestBody @Valid TopicDataReceiverDTO data, UriComponentsBuilder uriBuilder) {
-        var topic = new Topic(data);
+    public ResponseEntity createTopic(@RequestBody @Valid TopicoDataReceiverDTO data, UriComponentsBuilder uriBuilder) {
+        var topico = new Topico(data);
         var CONTEXT_AUTHOR = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        topic.setAuthor(CONTEXT_AUTHOR);
-        topicRepository.save(topic);
-        var location = uriBuilder.path("/topicos/{id}").buildAndExpand(topic.getId()).toUri();
-        return ResponseEntity.created(location).body(new TopicCreatedDAO(topic));
+        topico.setAuthor(CONTEXT_AUTHOR);
+        topicoRepository.save(topico);
+        var location = uriBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
+        return ResponseEntity.created(location).body(new TopicoCreatedDAO(topico));
     }
 }
