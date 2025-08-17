@@ -2,6 +2,7 @@ package br.com.alura.forumhub.controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
