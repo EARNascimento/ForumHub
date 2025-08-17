@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @Getter
 @EqualsAndHashCode(of = "id")
-public class Topic {
+public class Topico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,17 +31,17 @@ public class Topic {
     @JoinColumn(name = "autor")
     private User author;
 
-    @OneToMany(mappedBy = "topico", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Answer> answers = new ArrayList<>();
 
-    public Topic(TopicoDataReceiverDTO data) {
+    public Topic(TopicDataReceiverDTO data) {
         this.title = data.title();
         this.message = data.message();
         this.creationDate = data.creationDate();
         this.status = Status.NAO_RESPONDIDO;
     }
 
-    public void updateTopic(TopicoUpdatingDataReceiverDTO data) {
+    public void updateTopic(TopicUpdatingDataReceiverDTO data) {
         this.title = data.title();
         this.message = data.message();
     }
